@@ -38,6 +38,9 @@ runs:
         if [ "${{ runner.arch }}" = "ARM64" ]; then
           # installing libmamba-solver is necessary for openblas=*=*openmp*
           conda install --solver=classic -c conda-libmamba-solver libmamba libmambapy libarchive
+
+          # installing openblas that was compiled with USE_OPENMP=1. 
+          # Context: https://github.com/facebookresearch/faiss/wiki/Troubleshooting#surprising-faiss-openmp-and-openblas-interaction
           conda install -y -q -c conda-forge openblas=*=*openmp* gxx_linux-aarch64 sysroot_linux-aarch64
         fi
 
