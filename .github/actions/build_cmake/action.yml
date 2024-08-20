@@ -36,6 +36,7 @@ runs:
 
         # install base packages for ARM64
         if [ "${{ runner.arch }}" = "ARM64" ]; then
+          conda install --solver=classic conda-forge::conda-libmamba-solver conda-forge::libmamba conda-forge::libmambapy conda-forge::libarchive
           conda install -y -q -c conda-forge openblas=*=*openmp* gxx_linux-aarch64 sysroot_linux-aarch64
         fi
 
@@ -152,9 +153,6 @@ runs:
       run: |
         pytest --junitxml=test-results/pytest/results.xml tests/test_*.py
         pytest --junitxml=test-results/pytest/results-torch.xml tests/torch_*.py
-    - name: Setup tmate session
-      if: failure()
-      uses: mxschmitt/action-tmate@v3
     - name: Python tests (CPU + GPU)
       if: inputs.gpu == 'ON'
       shell: bash
