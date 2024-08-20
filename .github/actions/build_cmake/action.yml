@@ -36,7 +36,7 @@ runs:
 
         # install base packages for ARM64
         if [ "${{ runner.arch }}" = "ARM64" ]; then
-          # installing libmamba-solver is necessary for openblas=*=*openmp*
+          # installing libmamba-solver is necessary for openblas=*=*openmp* 1
           conda install --solver=classic conda-forge::conda-libmamba-solver conda-forge::libmamba conda-forge::libmambapy conda-forge::libarchive
 
           # installing openblas that was compiled with USE_OPENMP=1. 
