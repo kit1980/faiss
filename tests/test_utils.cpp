@@ -11,8 +11,8 @@
 #include <faiss/utils/utils.h>
 
 TEST(TestUtils, get_version) {
-    std::string version = std::to_string(FAISS_VERSION_MAJOR) + "," +
-            std::to_string(FAISS_VERSION_MINOR) + "," +
+    std::string version = std::to_string(FAISS_VERSION_MAJOR) + "." +
+            std::to_string(FAISS_VERSION_MINOR) + "." +
             std::to_string(FAISS_VERSION_PATCH);
 
     EXPECT_EQ(version, faiss::get_version());
