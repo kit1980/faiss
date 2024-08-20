@@ -771,6 +771,7 @@ TEST(TestGpuIndexIVFFlat, LongIVFList) {
     if (faiss::gpu::getFreeMemory(device) < kMem) {
         std::cout << "TestGpuIndexIVFFlat.LongIVFList: skipping due "
                      "to insufficient device memory\n";
+        FAIL();
         return;
     }
 

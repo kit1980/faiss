@@ -472,6 +472,7 @@ void testLargeIndex(bool use_raft) {
     if (faiss::gpu::getFreeMemory(device) < kMem) {
         std::cout << "TestGpuIndexFlat.LargeIndex: skipping due "
                      "to insufficient device memory\n";
+        FAIL();
         return;
     }
 
